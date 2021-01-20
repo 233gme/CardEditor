@@ -1,0 +1,14 @@
+.cart{
+  margin: 10px;
+  width: 10%;
+  border: 3px solid green;
+}
+.cart_header{
+  color: green;
+  margin: 5px;
+  border-bottom: 1px solid #000;
+}
+.cart_text{
+  color:green;
+  margin: 5px;
+}
