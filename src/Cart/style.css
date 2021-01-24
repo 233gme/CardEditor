@@ -1,14 +1,25 @@
 .cart{
   margin: 10px;
   width: 10%;
-  border: 3px solid green;
+  border: 3px solid;
+}
+.cart_is_green{
+  border-color: green;
+  color: green;
+}
+.cart_is_red{
+  border-color: red;
+  color: red;
 }
 .cart_header{
-  color: green;
   margin: 5px;
   border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
 }
 .cart_text{
-  color:green;
   margin: 5px;
+}
+input:hover{
+  cursor: pointer;
 }
