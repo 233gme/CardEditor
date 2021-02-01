@@ -1,22 +1,35 @@
-import React from 'react';
-import Header from './Header';
-import Cart from './Cart';
+import React, { Component } from 'react';
+import Header from './Header/Header';
+import Task from './Task/Task';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <div className='main' style={{ border: '3px solid #000', width: '100vw', height: '80vh' }}>
-        <Cart>
-          Jingle bells, jingle bells
-          Jingle all the way
-          Oh, what fun it is to ride
-          In a one horse open sleigh
-        </Cart>
-      </div>
-    </div>
-  );
-}
+class App extends Component {
+  state = {
+    title: 'Caption',
+    text: 'Jingle bells, jingle bells, Jingle all the way Oh, what fun it is to ride In a one horse open sleigh',
+  };
 
-export default App
+  // Add new text to stage
+  newTextChangeHandler = (value) => {
+    this.setState({
+      title: value.title,
+      text: value.text,
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <div className='main'>
+          <Task
+            task={this.state}
+            newTextChangeHandler={this.newTextChangeHandler}
+          />
+        </div>
+      </div>
+    )
+  }
+  }
+
+export default App 
