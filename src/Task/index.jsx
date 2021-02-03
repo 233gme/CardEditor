@@ -1,27 +1,22 @@
 import React, { useState } from 'react';
 import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
-import './Task.css';
+import './style.css';
 
 const Task = (props) => {
 
   // Flag for highlight the card
-  const [classFlag, setClassState] = useState(true);
-
+  let [classFlag, setClassState] = useState(true);
   const selectItem = () => setClassState(!classFlag);
 
   // Stage for type of button and adding input fields
   let [buttonFlag, setTaskState] = useState(true);
-
   const changeText = () => {
-    if (classFlag === false) setClassState(!classFlag)
+    setClassState(classFlag = true);
     setTaskState(!buttonFlag);
   }
 
   // Intermediate storage facility for text
-  const newTextObj = {
-    title: props.task.title,
-    text: props.task.text,
-  };
+  const newTextObj = { ...props.task };
 
   // Add text from input
   const newTitle = event => newTextObj.title = event.target.value;
@@ -38,13 +33,13 @@ const Task = (props) => {
       <div className={classFlag === true ? 'task task_is_green' : 'task task_is_red'}>
         <div className='task_title'>
           <p>{props.task.title}</p>
-        <div>
+          <div>
             <button title='режим редактирования' onClick={changeText}><AiFillEdit /></button>
             <input type="checkbox" onClick={selectItem}></input>
+          </div>
         </div>
-      </div>
         <p className='task_text'>{props.task.text}</p>
-     </div>
+      </div>
     )
   } else {
     return (

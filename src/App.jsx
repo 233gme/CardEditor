@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header/Header';
-import Task from './Task/Task';
+import Header from './Header';
+import Task from './Task';
 import './App.css';
 
 class App extends Component {
@@ -11,10 +11,7 @@ class App extends Component {
 
   // Add new text to stage
   newTextChangeHandler = (value) => {
-    this.setState({
-      title: value.title,
-      text: value.text,
-    });
+    this.setState({ ...value });
   }
 
   render() {
