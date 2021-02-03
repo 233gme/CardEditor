@@ -1,0 +1,57 @@
+.task{
+  margin: 10px;
+  height: 250px;
+  border: 3px solid;
+  border-radius: 5px;
+  flex: 0 0 calc( 25% - 30px );
+  display: flex;
+  flex-direction: column;
+}
+.task_is_green{
+  border-color: green;
+  color: green;
+}
+.task_is_red{
+  border-color: red;
+  color: red;
+}
+.task p{
+  overflow: hidden; 
+}
+.task_title{
+  height: 35px;
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.task_title input{
+width: 100%;
+font-size: 15px;
+}
+.task_title div{
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.task_title div button{
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task_title div button:hover, input:hover{
+  cursor: pointer;
+}
+.task_text{
+  margin: 5px;
+}
+.task_textarea{
+  margin: 0;
+  padding: 5px;
+  height: 100%;
+  font-size: 15px;
+}
