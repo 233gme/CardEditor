@@ -82,7 +82,7 @@ class App extends Component {
         <Task
           key={card.id}
           task={card}
-          view={this.state.viewOnlyHandler}
+          onView={this.state.viewOnlyHandler}
           newTextChangeHandler={this.newTextChangeHandler}
         />
       )
@@ -92,8 +92,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="checkbox">
-          <input onClick={this.newViewChangeHandler} type="checkbox" />
-          <p>только просмотр</p>
+          <input onClick={this.newViewChangeHandler} type="checkbox" id='check1' />
+          <label htmlFor='check1'>только просмотр</label>
         </div>
         <div className='main'>
           {tasks}

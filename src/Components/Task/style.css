@@ -27,15 +27,14 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.task_title input{
-width: 100%;
-font-size: 15px;
-}
 .task_title div{
   width: 50px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+}
+.task_title input{
+width: 100%;
+font-size: 15px;
 }
 .task_title div button{
   width: 35px;

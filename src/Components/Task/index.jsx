@@ -24,12 +24,12 @@ const Task = (props) => {
     setTaskState(editFlag = true);
   };
 
-  const normalState = (
+  const normalMode = (
     < div className={classFlag === true ? 'task task_is_green' : 'task task_is_red'}>
       <div className='task_title'>
         <p>{props.task.title}</p>
         <div>
-          <button title='режим редактирования' onClick={changeText}><AiFillEdit /></button>
+          {props.onView ? null : <button title='режим редактирования' onClick={changeText}><AiFillEdit /></button>}
           <input type="checkbox" onClick={selectItem}></input>
         </div>
       </div>
@@ -37,7 +37,7 @@ const Task = (props) => {
     </div >
   );
 
-  const editState = (
+  const editMode = (
     <div className='task task_is_green'>
       <div className='task_title'>
         <input type={'text'} name='title' onChange={newText} defaultValue={props.task.title}></input>
@@ -50,20 +50,9 @@ const Task = (props) => {
     </div>
   );
 
-  const viewState = (
-    < div className='task task_is_green'>
-      <div className='task_title'>
-        <p>{props.task.title}</p>
-      </div>
-      <p className='task_text'>{props.task.text}</p>
-    </div >
-  );
+  if (editFlag) return normalMode;
+  else return props.onView ? normalMode : editMode;
 
-  if (props.view) {
-    return viewState;
-  } else {
-    return editFlag ? normalState : editState;
-  }
 };
 
 export default Task;
