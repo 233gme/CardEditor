@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 import Header from './Components/Header';
-import Task from './Components/Task';
+import Card from './Components/Card';
 import './App.css';
+import styled from 'styled-components';
+
+const Checkbox = styled.input`
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  outline: none;
+  &:hover{
+    border: 3px solid #f06966;
+  }
+  &:active {
+    background: #f06966;
+  }
+  &:checked {
+    background: #f06966;
+    border: 3px solid #f06966;
+  }
+  `;
 
 class App extends Component {
   state = {
@@ -79,9 +100,9 @@ class App extends Component {
   render() {
     const tasks = this.state.cards.map((card) => {
       return (
-        <Task
+        <Card
           key={card.id}
-          task={card}
+          card={card}
           onView={this.state.viewOnlyHandler}
           newTextChangeHandler={this.newTextChangeHandler}
         />
@@ -91,8 +112,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className="checkbox">
-          <input onClick={this.newViewChangeHandler} type="checkbox" id='check1' />
+        <div className="checkbox__block">
+          <Checkbox onClick={this.newViewChangeHandler} type="checkbox" id='check1' />
           <label htmlFor='check1'>только просмотр</label>
         </div>
         <div className='main'>
