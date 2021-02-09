@@ -9,8 +9,15 @@
   overflow: hidden;
 }
 .main{
-  border: 3px solid #000;
-  height: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox input{
+  margin-right: 10px;
 }

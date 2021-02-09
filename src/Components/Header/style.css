@@ -1,5 +1,6 @@
 header{
   width: 100vw;
+  padding: 15px;
   border: solid 3px blue;
   text-align: center;
 }
