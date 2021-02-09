@@ -3,34 +3,33 @@ import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import './style.css';
 
 const Card = (props) => {
-
-  // Сhooses a card
+  // Card style switcher
   let [chooseСardFlag, setChooseСardState] = useState(false);
   const selectItem = () => setChooseСardState(!chooseСardFlag);
+  const clsStyle = chooseСardFlag === false ? 'card_is_green' : 'card_is_red';
 
-  // Stage for type of button and adding input fields
+  // Switch between edit mode and normal mode
   let [editModeFlag, setCardState] = useState(false);
   const changeText = () => {
     setChooseСardState(chooseСardFlag = false);
     setCardState(!editModeFlag);
   };
 
+  // Adding new text to cards
   const [textData, setNewTextData] = useState({
     ...props.card
   });
-
   const addNewText = event => {
     textData[event.target.name] = event.target.value;
     setNewTextData(textData);
   };
-
   const saveNewText = () => {
     props.newTextChangeHandler(textData);
     setCardState(editModeFlag = false);
   };
 
   const defaultMode = (
-    < div className={chooseСardFlag === false ? 'card card_is_green' : 'card card_is_red'}>
+    < div className={'card ' + clsStyle}>
       <div className='card_title'>
         <p>{props.card.title}</p>
         <div>
@@ -79,7 +78,7 @@ const Card = (props) => {
   } else {
     return !editModeFlag ? defaultMode : editMode;
   }
-
+  
 };
 
 export default Card;
