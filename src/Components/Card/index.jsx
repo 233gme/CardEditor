@@ -3,6 +3,7 @@ import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import './style.css';
 
 const Card = (props) => {
+
   // Сhooses a card
   let [chooseСardFlag, setChooseСardState] = useState(false);
   const selectItem = () => setChooseСardState(!chooseСardFlag);
@@ -14,16 +15,17 @@ const Card = (props) => {
     setCardState(!editModeFlag);
   };
 
-  // Intermediate storage facility for text
-  const newTextData = { ...props.card };
-  // Add text from input or textarea
+  const [textData, setNewTextData] = useState({
+    ...props.card
+  });
+
   const addNewText = event => {
-    newTextData[event.target.name] = event.target.value;
-  }
+    textData[event.target.name] = event.target.value;
+    setNewTextData(textData);
+  };
 
   const saveNewText = () => {
-    props.newTextChangeHandler(newTextData);
-    // console.log(newText)
+    props.newTextChangeHandler(textData);
     setCardState(editModeFlag = false);
   };
 
