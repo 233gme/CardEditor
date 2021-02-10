@@ -3,40 +3,61 @@ import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import './style.css';
 
 const Card = (props) => {
-  // Card style switcher
+  // Card style switcher (card selection)
   let [chooseСardFlag, setChooseСardState] = useState(false);
   const selectItem = () => setChooseСardState(!chooseСardFlag);
-  const clsStyle = chooseСardFlag === false ? 'card_is_green' : 'card_is_red';
+  const cls = chooseСardFlag === false ? 'card_is_green' : 'card_is_red';
 
-  // Switch between edit mode and normal mode
-  let [editModeFlag, setCardState] = useState(false);
-  const changeText = () => {
-    setChooseСardState(chooseСardFlag = false);
-    setCardState(!editModeFlag);
-  };
-
-  // Adding new text to cards
-  const [textData, setNewTextData] = useState({
+  // Adding new values to cards
+  const [newState, setNewState] = useState({
     ...props.card
   });
+
+  // Adding text
   const addNewText = event => {
-    textData[event.target.name] = event.target.value;
-    setNewTextData(textData);
-  };
-  const saveNewText = () => {
-    props.newTextChangeHandler(textData);
-    setCardState(editModeFlag = false);
+    setNewState({
+      ...newState,
+      [event.target.name]: event.target.value
+    });
   };
 
+  // Save text 
+  const saveChenges = () => {
+    const data = newState;
+    data.editModeFlag = false;
+    setNewState({
+      ...data
+    });
+    props.saveNewChanges(newState);
+  };
+  
+  // Enable card editing mode
+  const editModeOn = () => {
+    const data = newState;
+    data.editModeFlag = true;
+    setNewState({
+      ...data
+    });
+    setChooseСardState(chooseСardFlag = false)
+    props.saveNewChanges(newState);
+  }
+
+  // Undo all changes
+  const abortChanges = () => {
+    const data = props.card;
+    data.editModeFlag = false;
+    setNewState({
+      ...data
+    });
+    props.saveNewChanges(data);
+  }
+
   const defaultMode = (
-    < div className={'card ' + clsStyle}>
+    < div className={`card ${cls}`}>
       <div className='card_title'>
         <p>{props.card.title}</p>
         <div>
-          {props.onView ?
-            null : <button
-              title='режим редактирования'
-              onClick={changeText}>
+          {props.onView ? null : <button title='режим редактирования' onClick={editModeOn}>
               <AiFillEdit />
             </button>}
           <input
@@ -60,8 +81,8 @@ const Card = (props) => {
           defaultValue={props.card.title}>
         </input>
         <div>
-          <button title='сохранить изменения' onClick={saveNewText}><AiOutlineCheck /></button>
-          <button title='отменить изменения' onClick={changeText}><AiOutlineClose /></button>
+          <button title='сохранить изменения' onClick={saveChenges}><AiOutlineCheck /></button>
+          <button title='отменить изменения' onClick={abortChanges}><AiOutlineClose /></button>
         </div>
       </div>
       <textarea
@@ -73,12 +94,8 @@ const Card = (props) => {
     </div>
   );
 
-  if (props.onView) {
-    return defaultMode;
-  } else {
-    return !editModeFlag ? defaultMode : editMode;
-  }
-  
+  return props.card.editModeFlag ? editMode : defaultMode;
+
 };
 
 export default Card;
