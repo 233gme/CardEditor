@@ -1,0 +1,21 @@
+.card{
+  margin: 10px;
+  height: 250px;
+  border: 3px solid;
+  border-radius: 5px;
+  flex: 1 0 calc( 15% - 20px );
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.card_is_green{
+  border-color: #6abe83;
+  color: #6abe83;
+}
+.card_is_red{
+  border-color: #f06966;
+  color: #f06966;
+}
+.card p{
+  overflow: hidden;
+}

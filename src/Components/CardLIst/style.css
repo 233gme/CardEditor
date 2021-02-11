@@ -1,0 +1,49 @@
+.main{
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav_block{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.nav_block p {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.view_mode_btn{
+  appearance: none;
+  width: 23px;
+  height: 23px;
+  margin-right: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  outline: none;
+}
+.view_mode_btn:hover{
+  border: 2px solid #f06966;
+}
+.view_mode_btn:active {
+  background: #f06966;
+}
+.view_mode_btn:checked {
+  background: #f06966;
+  border: 2px solid #f06966;
+}
+.del_mode_btn{
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  font-size: large;
+  margin-right: 10px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #f6f5f3;
+}
+.del_mode_btn:hover{
+  cursor: pointer;
+}

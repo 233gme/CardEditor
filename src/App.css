@@ -9,14 +9,3 @@
   overflow: hidden;
   background-color: #f6f5f3;
 }
-.main{
-  display: flex;
-  flex-wrap: wrap;
-}
-.checkbox__block{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-}

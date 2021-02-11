@@ -1,0 +1,9 @@
+.card_text{
+  margin: 5px;
+}
+.card_textarea{
+  margin: 0;
+  padding: 5px;
+  height: 100%;
+  font-size: 15px;
+}
