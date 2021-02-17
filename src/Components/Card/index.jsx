@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import CardBody from './CardBody';
-import CardHeader from './CardHeader';
 import './style.css';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
 
 const Card = (props) => {
-  // Adding new values to cards
+  // Adding new text into the card
   const [newState, setNewState] = useState({
-    ...props.card,
+    ...props.card
   });
 
   // Card style switcher (card selection)
   const selectItem = () => {
-    const data = newState;
-    data.cardSelectionFlag = !newState.cardSelectionFlag;
-    props.saveNewChanges(data);
+    props.onSaveChanges({
+      ...newState,
+      chooseСardFlag: !props.card.chooseСardFlag
+    })
   };
-  const cls = props.card.cardSelectionFlag === false ? 'card_is_green' : 'card_is_red';
 
   // Adding text
   const addNewText = event => {
@@ -25,27 +25,36 @@ const Card = (props) => {
     });
   };
 
-  // Save text 
-  const saveChenges = () => {
-    const data = newState;
-    data.editModeFlag = false;
-    props.saveNewChanges(data);
-  };
-
   // Enable card editing mode
   const editModeOn = () => {
-    const data = newState;
-    data.editModeFlag = true;
-    data.cardSelectionFlag = false;
-    props.saveNewChanges(data);
+    props.onSaveChanges({
+      ...newState,
+      editModeFlag: true,
+      chooseСardFlag: false
+    });
+  }
+
+  // Save new text 
+  const saveChenges = () => {
+    props.onSaveChanges({
+      ...newState,
+      editModeFlag: false
+    });
   };
 
   // Undo all changes
   const abortChanges = () => {
-    const data = props.card;
-    data.editModeFlag = false;
-    props.saveNewChanges(data);
-  };
+    props.onSaveChanges({
+      ...props.card,
+      editModeFlag: false
+    });
+    setNewState({
+      ...props.card,
+      editModeFlag: false
+    })
+  }
+
+  const cls = props.card.chooseСardFlag === false ? 'card_is_green' : 'card_is_red';
 
   return (
     < div className={`card ${cls}`}>
@@ -56,13 +65,11 @@ const Card = (props) => {
         selectItem={selectItem}
         addNewText={addNewText}
         saveChenges={saveChenges}
-        abortChanges={abortChanges}
-      />
+        abortChanges={abortChanges} />
       <CardBody
         card={props.card}
-        addNewText={addNewText}
-      />
-    </div >
+        addNewText={addNewText} />
+    </div>
   )
 
 };

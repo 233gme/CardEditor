@@ -4,3 +4,27 @@ header{
   text-align: center;
   background-color: #f6f5f3;
 }
+.checkbox__block{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.checkbox__block div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.checkbox__block div button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox__block div button:hover{
+  cursor: pointer;
+}
+.checkbox__block div span{
+  padding-left: 10px;
+}
