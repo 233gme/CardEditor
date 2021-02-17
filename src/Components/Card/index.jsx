@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import classNames from 'classnames';
 
 const Card = (props) => {
   // Adding new text into the card
@@ -54,10 +55,8 @@ const Card = (props) => {
     })
   }
 
-  const cls = props.card.chooseСardFlag === false ? 'card_is_green' : 'card_is_red';
-
   return (
-    < div className={`card ${cls}`}>
+    < div className={classNames('card', { 'card_is_red': props.card.chooseСardFlag, 'card_is_green': !props.card.chooseСardFlag })}>
       <CardHeader
         card={props.card}
         onView={props.onView}

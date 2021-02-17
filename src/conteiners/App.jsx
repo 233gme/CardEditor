@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import Header from '../Components/Header';
 import './App.css';
-import CardList from '../components/CardList';
+import CardList from '../Components/CardList';
 
 class App extends Component {
   state = {
@@ -81,9 +81,7 @@ class App extends Component {
   };
 
   saveNewChanges = (value) => {
-    const itemIndex = this.state.cards.findIndex(item => {
-      return item.id === value.id
-    });
+    const itemIndex = this.state.cards.findIndex(item => (item.id === value.id));
     const newCardState = [...this.state.cards];
     newCardState[itemIndex] = { ...value };
     this.setState({ cards: newCardState });
@@ -91,18 +89,14 @@ class App extends Component {
 
   viewHandler = () => {
     this.setState({
-      cards: [...this.state.cards].map(item => {
-        return { ...item, editModeFlag: false }
-      }),
+      cards: [...this.state.cards].map(item => ({ ...item, editModeFlag: false })),
       viewMode: !this.state.viewMode
     });
   }
 
   deleteHandler = () => {
     this.setState({
-      cards: [...this.state.cards].filter(item => {
-        return item.chooseСardFlag === false;
-      })
+      cards: [...this.state.cards].filter(item => !item.chooseСardFlag)
     });
   }
 

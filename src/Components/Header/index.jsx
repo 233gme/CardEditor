@@ -13,6 +13,7 @@ const Checkbox = styled.input`
   outline: none;
   &:hover{
     border: 1px solid #f06966;
+    background: #fdb8b6;
   }
   &:active {
     background: #f06966;
