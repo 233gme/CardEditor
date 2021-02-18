@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import './style.css';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
+import classNames from 'classnames';
 
 const Card = (props) => {
-  // Card style switcher (card selection)
-  let [chooseСardFlag, setChooseСardState] = useState(false);
-  const selectItem = () => setChooseСardState(!chooseСardFlag);
-  const cls = chooseСardFlag === false ? 'card_is_green' : 'card_is_red';
-
-  // Adding new values to cards
+  // Adding new text into the card
   const [newState, setNewState] = useState({
     ...props.card
   });
+
+  // Card style switcher (card selection)
+  const selectItem = () => {
+    props.onSaveChanges({
+      ...newState,
+      chooseСardFlag: !props.card.chooseСardFlag
+    })
+  };
 
   // Adding text
   const addNewText = event => {
@@ -21,80 +26,50 @@ const Card = (props) => {
     });
   };
 
-  // Save text 
-  const saveChenges = () => {
-    const data = newState;
-    data.editModeFlag = false;
-    setNewState({
-      ...data
-    });
-    props.saveNewChanges(newState);
-  };
-  
   // Enable card editing mode
   const editModeOn = () => {
-    const data = newState;
-    data.editModeFlag = true;
-    setNewState({
-      ...data
+    props.onSaveChanges({
+      ...newState,
+      editModeFlag: true,
+      chooseСardFlag: false
     });
-    setChooseСardState(chooseСardFlag = false)
-    props.saveNewChanges(newState);
   }
+
+  // Save new text 
+  const saveChenges = () => {
+    props.onSaveChanges({
+      ...newState,
+      editModeFlag: false
+    });
+  };
 
   // Undo all changes
   const abortChanges = () => {
-    const data = props.card;
-    data.editModeFlag = false;
-    setNewState({
-      ...data
+    props.onSaveChanges({
+      ...props.card,
+      editModeFlag: false
     });
-    props.saveNewChanges(data);
+    setNewState({
+      ...props.card,
+      editModeFlag: false
+    })
   }
 
-  const defaultMode = (
-    < div className={`card ${cls}`}>
-      <div className='card_title'>
-        <p>{props.card.title}</p>
-        <div>
-          {props.onView ? null : <button title='режим редактирования' onClick={editModeOn}>
-              <AiFillEdit />
-            </button>}
-          <input
-            className='card_checbox'
-            type="checkbox"
-            onClick={selectItem}>
-          </input>
-        </div>
-      </div>
-      <p className='card_text'>{props.card.text}</p>
-    </div >
-  );
-
-  const editMode = (
-    <div className='card card_is_green'>
-      <div className='card_title'>
-        <input
-          type={'text'}
-          name='title'
-          onChange={addNewText}
-          defaultValue={props.card.title}>
-        </input>
-        <div>
-          <button title='сохранить изменения' onClick={saveChenges}><AiOutlineCheck /></button>
-          <button title='отменить изменения' onClick={abortChanges}><AiOutlineClose /></button>
-        </div>
-      </div>
-      <textarea
-        className='card_textarea'
-        name='text'
-        onChange={addNewText}
-        defaultValue={props.card.text}>
-      </textarea>
+  return (
+    < div className={classNames('card', { 'card_is_red': props.card.chooseСardFlag, 'card_is_green': !props.card.chooseСardFlag })}>
+      <CardHeader
+        card={props.card}
+        onView={props.onView}
+        editModeOn={editModeOn}
+        selectItem={selectItem}
+        addNewText={addNewText}
+        saveChenges={saveChenges}
+        abortChanges={abortChanges} />
+      <CardBody
+        card={props.card}
+        addNewText={addNewText} />
     </div>
-  );
-
-  return props.card.editModeFlag ? editMode : defaultMode;
+  )
 
 };
 

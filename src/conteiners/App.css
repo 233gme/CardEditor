@@ -13,10 +13,3 @@
   display: flex;
   flex-wrap: wrap;
 }
-.checkbox__block{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-}
