@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import styled from 'styled-components';
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlinePlusSquare } from "react-icons/ai";
 
 const Checkbox = styled.input`
   appearance: none;
@@ -30,12 +30,16 @@ function Header(props) {
       <h1>Header</h1>
       <div className="checkbox__block">
         <div>
-          <Checkbox onClick={props.viewHandler} type="checkbox" id='check1' />
+          <Checkbox onClick={props.onViewHandler} type="checkbox" id='check1' />
           <label htmlFor='check1'>View Only Mode</label>
         </div>
         <div>
-          <button onClick={props.deleteHandler}><AiOutlineDelete /></button>
-          <span>Delete</span>
+          <button onClick={props.onCreateHandler}><AiOutlinePlusSquare /></button>
+          <span>Create Card</span>
+        </div>
+        <div>
+          <button onClick={props.onDeleteHandler}><AiOutlineDelete /></button>
+          <span>Delete Card</span>
         </div>
       </div>
     </header>
