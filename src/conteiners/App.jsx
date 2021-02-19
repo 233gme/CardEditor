@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Header from '../Components/Header';
-import './App.css';
 import CardList from '../Components/CardList';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -87,16 +88,28 @@ class App extends Component {
     this.setState({ cards: newCardState });
   }
 
-  viewHandler = () => {
+  viewCardHandler = () => {
     this.setState({
       cards: [...this.state.cards].map(item => ({ ...item, editModeFlag: false })),
       viewMode: !this.state.viewMode
     });
   }
 
-  deleteHandler = () => {
+  deleteCardHandler = () => {
     this.setState({
       cards: [...this.state.cards].filter(item => !item.chooseСardFlag)
+    });
+  }
+
+  createCardHandler = () => {
+    this.setState({
+      cards: [...this.state.cards].concat({
+        id: uuidv4(),
+        title: '',
+        text: '',
+        editModeFlag: false,
+        chooseСardFlag: false,
+      })
     });
   }
 
@@ -104,8 +117,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header
-          viewHandler={this.viewHandler}
-          deleteHandler={this.deleteHandler} />
+          onViewHandler={this.viewCardHandler}
+          onDeleteHandler={this.deleteCardHandler}
+          onCreateHandler={this.createCardHandler} />
         <CardList
           data={this.state}
           saveNewChanges={this.saveNewChanges} />
