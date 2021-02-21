@@ -3,6 +3,7 @@ import './style.css';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import classNames from 'classnames';
+import WithLoadingDelay from '../../HOC/WithLoadingDelay';
 
 const Card = (props) => {
   // Adding new text into the card
@@ -56,7 +57,7 @@ const Card = (props) => {
   }
 
   return (
-    < div className={classNames('card', { 'card_is_red': props.card.chooseСardFlag, 'card_is_green': !props.card.chooseСardFlag })}>
+    < WithLoadingDelay myClass={classNames('card', { 'card_is_red': props.card.chooseСardFlag })}>
       <CardHeader
         card={props.card}
         onView={props.onView}
@@ -68,7 +69,7 @@ const Card = (props) => {
       <CardBody
         card={props.card}
         addNewText={addNewText} />
-    </div>
+    </WithLoadingDelay>
   )
 
 };

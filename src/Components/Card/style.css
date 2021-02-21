@@ -7,8 +7,6 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
-}
-.card_is_green{
   border-color: #6abe83;
   color: #6abe83;
 }
@@ -54,4 +52,9 @@ font-size: 15px;
   padding: 5px;
   height: 100%;
   font-size: 15px;
+}
+.preloader{
+  background-image: url('../../Assets/IMG/preload.gif');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
