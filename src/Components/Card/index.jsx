@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './style.css';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import classNames from 'classnames';
-import WithLoadingDelay from '../../HOC/WithLoadingDelay';
+import Aux from '../../HOC/Aux';
+import withLoadingDelay from '../../HOC/withLoadingDelay';
 
 const Card = (props) => {
   // Adding new text into the card
@@ -57,7 +57,7 @@ const Card = (props) => {
   }
 
   return (
-    < WithLoadingDelay myClass={classNames('card', { 'card_is_red': props.card.chooseСardFlag })}>
+    <Aux>
       <CardHeader
         card={props.card}
         onView={props.onView}
@@ -69,9 +69,9 @@ const Card = (props) => {
       <CardBody
         card={props.card}
         addNewText={addNewText} />
-    </WithLoadingDelay>
+    </Aux>
   )
 
 };
 
-export default Card;
+export default withLoadingDelay(Card);
