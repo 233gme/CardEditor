@@ -1,18 +1,17 @@
 import React from 'react';
 import './style.css';
 import styled from 'styled-components';
-import { AiOutlineDelete, AiOutlinePlusSquare } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 
 const Checkbox = styled.input`
   appearance: none;
   width: 15px;
   height: 15px;
-  margin-right: 10px;
-  border: 1px solid #000;
-  border-radius: 5px;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
   outline: none;
   &:hover{
-    border: 1px solid #f06966;
     background: #fdb8b6;
   }
   &:active {
@@ -20,7 +19,6 @@ const Checkbox = styled.input`
   }
   &:checked {
     background: #f06966;
-    border: 1px solid #f06966;
   }
   `;
 
@@ -28,18 +26,18 @@ function Header(props) {
   return (
     <header>
       <h1>Header</h1>
-      <div className="checkbox__block">
+      <div className="nav__block">
         <div>
+          <span className='buttons buttons__view-mode'>
           <Checkbox onClick={props.onViewHandler} type="checkbox" id='check1' />
-          <label htmlFor='check1'>View Only Mode</label>
+            <label htmlFor='check1'>View Mode</label>
+          </span>
         </div>
         <div>
-          <button onClick={props.onCreateHandler}><AiOutlinePlusSquare /></button>
-          <span>Create Card</span>
+          <button className='buttons buttons__add-card' onClick={props.onCreateHandler}><AiOutlinePlus /> Add Card</button>
         </div>
         <div>
-          <button onClick={props.onDeleteHandler}><AiOutlineDelete /></button>
-          <span>Delete Card</span>
+          <button className='buttons buttons__delete-card' onClick={props.onDeleteHandler}><AiOutlineDelete /> Delete Card</button>
         </div>
       </div>
     </header>

@@ -4,27 +4,35 @@ header{
   text-align: center;
   background-color: #f6f5f3;
 }
-.checkbox__block{
-  display: flex;
-  flex-direction: row;
+.nav__block{
+  display: grid;
+  grid-template-columns: repeat(3,200px);
   justify-content: center;
-  align-items: center;
-  padding: 15px;
+  padding-top: 15px;
 }
-.checkbox__block div {
-  display: flex;
-  justify-content: center;
+.buttons{
+  display: inline-grid;
+  grid-auto-flow: column;
+  column-gap: 10px;
   align-items: center;
-  padding: 15px;
+  font-size: 20px;
+  font-family: inherit;
+  padding: 0.5em 0.7em;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  color: #fff;
+  outline: none;
 }
-.checkbox__block div button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.checkbox__block div button:hover{
+.buttons label {
   cursor: pointer;
 }
-.checkbox__block div span{
-  padding-left: 10px;
+.buttons__view-mode{
+  background-color: #f06966;
+}
+.buttons__add-card{
+  background-color: #6abe83;
+}
+.buttons__delete-card{
+  background-color: #000;
 }
