@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const CardHeader = (props) => {
@@ -26,6 +27,16 @@ const CardHeader = (props) => {
   );
 
   return props.card.editModeFlag ? editMode : defaultMode;
+}
+
+CardHeader.propTypes = {
+  title: PropTypes.string,
+  onView: PropTypes.bool,
+  editModeOn: PropTypes.func,
+  selectItem: PropTypes.func,
+  addNewText: PropTypes.func,
+  saveChenges: PropTypes.func,
+  abortChanges: PropTypes.func,
 }
 
 export default CardHeader

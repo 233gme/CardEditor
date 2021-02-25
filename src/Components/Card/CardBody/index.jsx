@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CardBody = (props) => {
 
@@ -14,6 +15,11 @@ const CardBody = (props) => {
   );
 
   return props.card.editModeFlag ? editMode : defaultMode;
+}
+
+CardBody.propTypes = {
+  text: PropTypes.string,
+  addNewText: PropTypes.func,
 }
 
 export default CardBody

@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
+import PropTypes from 'prop-types';
+
 import './style.css';
+
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import Aux from '../../HOC/Aux';
 import withLoadingDelay from '../../HOC/withLoadingDelay';
 
 const Card = (props) => {
+  // console.log(typeof props.card)
+
   // Adding new text into the card
   const [newState, setNewState] = useState({
     ...props.card
@@ -57,7 +61,7 @@ const Card = (props) => {
   }
 
   return (
-    <Aux>
+    <Fragment>
       <CardHeader
         card={props.card}
         onView={props.onView}
@@ -69,9 +73,19 @@ const Card = (props) => {
       <CardBody
         card={props.card}
         addNewText={addNewText} />
-    </Aux>
+    </Fragment>
   )
 
 };
+
+Card.propTypes = {
+  card: PropTypes.object,
+  onView: PropTypes.bool,
+  editModeOn: PropTypes.func,
+  selectItem: PropTypes.func,
+  addNewText: PropTypes.func,
+  saveChenges: PropTypes.func,
+  abortChanges: PropTypes.func,
+}
 
 export default withLoadingDelay(Card);
