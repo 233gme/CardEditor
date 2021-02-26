@@ -1,7 +1,9 @@
-import React from 'react';
-import './style.css';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
+import Badge from './Badge';
+import { CardContext } from '../../Context/card-context';
+import './style.css';
 
 const Checkbox = styled.input`
   appearance: none;
@@ -22,22 +24,25 @@ const Checkbox = styled.input`
   }
   `;
 
-function Header(props) {
+const Header = () => {
+  const { onView, onAdd, onDelete } = useContext(CardContext)
+
   return (
     <header>
       <h1>Header</h1>
+      <Badge />
       <div className="nav__block">
         <div>
           <span className='buttons buttons__view-mode'>
-          <Checkbox onClick={props.onViewHandler} type="checkbox" id='check1' />
+            <Checkbox onClick={onView} type="checkbox" id='check1' />
             <label htmlFor='check1'>View Mode</label>
           </span>
         </div>
         <div>
-          <button className='buttons buttons__add-card' onClick={props.onCreateHandler}><AiOutlinePlus /> Add Card</button>
+          <button className='buttons buttons__add-card' onClick={onAdd}><AiOutlinePlus /> Add Card</button>
         </div>
         <div>
-          <button className='buttons buttons__delete-card' onClick={props.onDeleteHandler}><AiOutlineDelete /> Delete Card</button>
+          <button className='buttons buttons__delete-card' onClick={onDelete}><AiOutlineDelete /> Delete Card</button>
         </div>
       </div>
     </header>
