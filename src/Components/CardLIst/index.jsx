@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '../Card';
+import { CardContext } from '../../Context/card-context';
 
-const CardList = (props) => {
+const CardList = () => {
+  const { cards, view, onSave } = useContext(CardContext);
+
   return (
-  <div className='main'>
-      {props.data.cards.map(card => {
+    <div className='main'>
+      {cards.map(card => {
         return (
-        <Card
+          <Card
             key={card.id}
             card={card}
-            onView={props.data.viewMode}
-            onSaveChanges={props.saveNewChanges} />
+            onView={view}
+            onSaveChanges={onSave} />
         )
-          })}
+      })}
     </div>
   )
 }
