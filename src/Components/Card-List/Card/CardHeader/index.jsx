@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillEdit, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
-const CardHeader = (props) => {
+const CardHeader = props => {
 
   const defaultMode = (
     <div className='card_title'>
@@ -28,4 +28,4 @@ const CardHeader = (props) => {
   return props.card.editModeFlag ? editMode : defaultMode;
 }
 
-export default CardHeader
+export default CardHeader;

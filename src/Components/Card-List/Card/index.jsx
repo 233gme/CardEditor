@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import './style.css';
+import React, { useState, Fragment } from 'react';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import Aux from '../../HOC/Aux';
-import withLoadingDelay from '../../HOC/withLoadingDelay';
+import withLoadingDelay from '../../../HOC/withLoadingDelay';
+import PropTypes from 'prop-types';
+import './style.css';
 
-const Card = (props) => {
-  // Adding new text into the card
+const Card = props => {
   const [newState, setNewState] = useState({
     ...props.card
   });
 
-  // Card style switcher (card selection)
   const selectItem = () => {
     props.onSaveChanges({
       ...newState,
@@ -19,7 +17,6 @@ const Card = (props) => {
     })
   };
 
-  // Adding text
   const addNewText = event => {
     setNewState({
       ...newState,
@@ -27,7 +24,6 @@ const Card = (props) => {
     });
   };
 
-  // Enable card editing mode
   const editModeOn = () => {
     props.onSaveChanges({
       ...newState,
@@ -36,7 +32,6 @@ const Card = (props) => {
     });
   }
 
-  // Save new text 
   const saveChenges = () => {
     props.onSaveChanges({
       ...newState,
@@ -44,7 +39,6 @@ const Card = (props) => {
     });
   };
 
-  // Undo all changes
   const abortChanges = () => {
     props.onSaveChanges({
       ...props.card,
@@ -57,7 +51,7 @@ const Card = (props) => {
   }
 
   return (
-    <Aux>
+    <Fragment>
       <CardHeader
         card={props.card}
         onView={props.onView}
@@ -69,9 +63,19 @@ const Card = (props) => {
       <CardBody
         card={props.card}
         addNewText={addNewText} />
-    </Aux>
+    </Fragment>
   )
 
+};
+
+Card.propTypes = {
+  card: PropTypes.object,
+  onView: PropTypes.bool,
+  editModeOn: PropTypes.func,
+  selectItem: PropTypes.func,
+  addNewText: PropTypes.func,
+  saveChenges: PropTypes.func,
+  abortChanges: PropTypes.func
 };
 
 export default withLoadingDelay(Card);
