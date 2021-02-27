@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardBody = (props) => {
+const CardBody = props => {
 
   const defaultMode = (
     <p className='card_text'>{props.card.text}</p>
