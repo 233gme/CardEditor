@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Components/Header';
-import CardList from '../Components/CardList';
+import CardList from '../Components/Card-List';
 import CardProvider from '../Context/card-context';
 import './App.css';
 
@@ -15,4 +15,4 @@ const App = () => {
     )
 }
 
-export default App 
+export default App;

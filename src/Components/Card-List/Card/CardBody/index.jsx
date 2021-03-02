@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardBody = (props) => {
+const CardBody = props => {
 
   const defaultMode = (
     <p className='card_text'>{props.card.text}</p>
@@ -16,4 +16,4 @@ const CardBody = (props) => {
   return props.card.editModeFlag ? editMode : defaultMode;
 }
 
-export default CardBody
+export default CardBody;
