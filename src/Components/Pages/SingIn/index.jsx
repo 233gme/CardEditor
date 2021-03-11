@@ -4,23 +4,23 @@ import './style.css';
 
 const SignIn = () => {
   const [formState, setFormState] = useState({ username: '', password: '' });
-  const [subState, setSubmit] = useState(false)
-
-  console.log('subState', subState)
+  const [subState, setSubmit] = useState(false);
 
   // Checking username and password
   useEffect(() => {
-    if (/\S+@\S+\.(\S{2,6})$/.test(formState.username) && /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{7,}/g.test(formState.password)) {
+    if ((/\S+@\S+\.(\S{2,6})$/.test(formState.username))
+      && (/(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}/g.test(formState.password))) {
       setSubmit(true);
     } else {
       setSubmit(false);
     }
-  }, [formState])
+  }, [formState]);
 
   const handleSubmit = event => {
     event.preventDefault();
     setFormState({ username: '', password: '', });
     setSubmit(false);
+    console.log(`Form Submit`)
   }
 
   // Added values to the formState
@@ -48,7 +48,7 @@ const SignIn = () => {
       </label>
       <button className={classNames('buttons', { 'btn_disable': !subState })}>Войти</button>
     </form>
-  )
+  );
 }
 
 export default SignIn;
