@@ -5,5 +5,17 @@ form{
   align-items: center;
 }
 form label{
-  margin-bottom: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+form label input{
+  background-color: #f6f5f3;
+  border: none;
+  font-size: 14px;
+}
+.btn_disable{
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }

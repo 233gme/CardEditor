@@ -1,11 +1,5 @@
 import React from 'react';
 
-const notFound = () => {
-  return (
-    <div>
-      Not Found
-    </div>
-  )
-}
+const notFound = () => (<h2 style={{ textAlign: 'center' }}>Page Not Found</h2>)
 
 export default notFound;
