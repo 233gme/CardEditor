@@ -36,7 +36,7 @@ const Header = () => {
         <div className='nav__block__links'>
           <ul>
             <li><NavLink to='/'>Home</NavLink></li>
-            <li><NavLink to='/sing_in'>Sing in</NavLink></li>
+            <li><NavLink to='/sing-in'>Sing in</NavLink></li>
           </ul>
         </div>
         <Route path='/' exact>
