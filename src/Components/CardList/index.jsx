@@ -1,19 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Card from './Card';
-import { CardContext } from '../../Context/card-context';
+import { useSelector, useDispatch } from 'react-redux';
+import { onSave } from '../../Store/Actions';
 
-const CardList = () => {
-  const { cards, view, onSave } = useContext(CardContext);
+const CardList = props => {
+  const { cards, view } = useSelector(state => (state));
+  const dispatch = useDispatch();
+  const onSaveChanges = index => { dispatch(onSave(cards, index)) };
 
   return (
     <div className='main'>
-      {cards.map(card => {
+      {cards && cards.map(card => {
         return (
           <Card
             key={card.id}
             card={card}
             onView={view}
-            onSaveChanges={onSave} />
+            onSaveChanges={(val) => onSaveChanges(val)}
+            route={props} />
         )
       })}
     </div>

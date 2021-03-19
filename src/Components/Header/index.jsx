@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
-import { CardContext } from '../../Context/card-context';
-import { NavLink, Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import Badge from './Badge';
+import { useSelector, useDispatch } from 'react-redux';
+import { onView, onDelete, onAdd } from '../../Store/Actions';
 import './style.css';
 
 const Checkbox = styled.input`
@@ -26,7 +27,11 @@ const Checkbox = styled.input`
   `;
 
 const Header = () => {
-  const { onView, onAdd, onDelete } = useContext(CardContext)
+  const dispatch = useDispatch();
+  const { cards, view } = useSelector(state => (state));
+  const onViewHandler = () => { dispatch(onView(cards, !view)) };
+  const onDeleteCard = () => { dispatch(onDelete(cards)) };
+  const onAddCard = () => { dispatch(onAdd(cards)) };
 
   return (
     <header>
@@ -35,23 +40,23 @@ const Header = () => {
       <div className="nav__block">
         <div className='nav__block__links'>
           <ul>
-            <li><NavLink to='/'>Home</NavLink></li>
-            <li><NavLink to='/sing-in'>Sing in</NavLink></li>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/sing-in'>Sing in</Link></li>
           </ul>
         </div>
         <Route path='/' exact>
           <div className='nav__block__buttons'>
         <div>
               <span className='buttons'>
-            <Checkbox onClick={onView} type="checkbox" id='check1' />
+                <Checkbox onClick={onViewHandler} type="checkbox" id='check1' />
             <label htmlFor='check1'>View Mode</label>
           </span>
         </div>
         <div>
-              <button className='buttons' onClick={onAdd}><AiOutlinePlus /> Add Card</button>
+              <button className='buttons' onClick={onAddCard}><AiOutlinePlus /> Add Card</button>
         </div>
         <div>
-              <button className='buttons' onClick={onDelete}><AiOutlineDelete /> Delete Card</button>
+              <button className='buttons' onClick={onDeleteCard}><AiOutlineDelete /> Delete Card</button>
           </div>
           </div>
         </Route>

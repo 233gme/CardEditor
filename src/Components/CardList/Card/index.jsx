@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import withLoadingDelay from '../../../HOC/withLoadingDelay';
@@ -30,6 +30,11 @@ const Card = props => {
       editModeFlag: true,
       chooseСardFlag: false
     });
+    setNewState({
+      ...newState,
+      editModeFlag: true,
+      chooseСardFlag: false
+    });
   }
 
   const saveChenges = () => {
@@ -50,8 +55,14 @@ const Card = props => {
     })
   }
 
+  const toFullCardPage = () => {
+    if (!newState.editModeFlag) {
+      props.route.history.push('/card/' + newState.id)
+    }
+  }
+
   return (
-    <Fragment>
+    <div style={{ minHeight: '100%' }} onDoubleClick={toFullCardPage}>
       <CardHeader
         card={props.card}
         onView={props.onView}
@@ -61,9 +72,9 @@ const Card = props => {
         saveChenges={saveChenges}
         abortChanges={abortChanges} />
       <CardBody
-        card={props.card}
-        addNewText={addNewText} />
-    </Fragment>
+      card={props.card}
+      addNewText={addNewText} />
+    </div>
   )
 
 };

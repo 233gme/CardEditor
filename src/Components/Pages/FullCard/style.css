@@ -1,0 +1,24 @@
+input{
+  font-size: 15px;
+  border: none;
+  font-style: italic;
+  outline: none;
+}
+.fullcard_block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fullcard{
+  text-align: center;
+  width: 70%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+}
+.fullcard_block_nav{
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+}

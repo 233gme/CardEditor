@@ -7,9 +7,10 @@ const CardBody = props => {
   );
 
   const editMode = (
-    <textarea className='card_textarea' name='text'
-      onChange={props.addNewText}
-      defaultValue={props.card.text}>
+    <textarea className='card_textarea'
+      name='text'
+    onChange={props.addNewText} 
+    defaultValue={props.card.text}>
     </textarea>
   );
 

@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
-import { CardContext } from '../../../Context/card-context';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import './style.css';
 
 const Badge = () => {
-  const { counter } = useContext(CardContext)
+  const { cards } = useSelector(state => (state));
+  const count = (value) => (value.length)
 
   return (
-    <div className='badge'>Counter: <span>{counter()}</span></div>
+    <div className='badge'>Counter: <span>{count(cards)}</span></div>
   )
 }
 

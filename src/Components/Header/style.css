@@ -49,10 +49,13 @@ text-decoration: underline;
   cursor: pointer;
   color: #000;
   outline: none;
+  transition: all linear 0.3s;
 }
 .buttons label {
   cursor: pointer;
 }
 .buttons:hover{
-  background-color: #eeeeee;
+  transition: all linear 0.3s;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
