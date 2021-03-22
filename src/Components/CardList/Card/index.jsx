@@ -31,7 +31,7 @@ const Card = props => {
   }
 
   const toFullCardPage = () => {
-    if (!newState.editModeFlag) {
+    if (!newState.editModeFlag && !props.onView) {
       props.route.history.push('/card/' + newState.id)
       props.onSaveChanges({...newState, chooseСardFlag: false})
     }
