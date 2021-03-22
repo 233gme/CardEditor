@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { onSave } from '../../../Store/Actions';
+import { onSave } from '../../../Store/Actions/actions';
 
 const FullCard = props => {
   const [fullcard, setFullState] = useState({})

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 const withLoadingDelay = (WrappedComponent) => {
-
   return props => {
     const [loaded, setLoad] = useState(false);
     useEffect(() => {

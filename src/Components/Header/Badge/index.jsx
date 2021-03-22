@@ -4,7 +4,7 @@ import './style.css';
 
 const Badge = () => {
   const { cards } = useSelector(state => (state));
-  const count = (value) => (value.length)
+  const count = value => (value.length)
 
   return (
     <div className='badge'>Counter: <span>{count(cards)}</span></div>

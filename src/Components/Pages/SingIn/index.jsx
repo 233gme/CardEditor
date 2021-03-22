@@ -46,7 +46,7 @@ const SignIn = () => {
           onChange={handleChange}
           required />
       </label>
-      <button className={classNames('buttons', { 'btn_disable': !subState })}>Войти</button>
+      <button className={classNames('buttons', { 'btn_disable': !subState })}>Sing in</button>
     </form>
   );
 }

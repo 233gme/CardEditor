@@ -4,7 +4,7 @@ import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 import { Link, Route } from 'react-router-dom';
 import Badge from './Badge';
 import { useSelector, useDispatch } from 'react-redux';
-import { onView, onDelete, onAdd } from '../../Store/Actions';
+import { onView, onDelete, onAdd } from '../../Store/Actions/actions';
 import './style.css';
 
 const Checkbox = styled.input`
@@ -47,18 +47,17 @@ const Header = () => {
         <Route path='/' exact>
           <div className='nav__block__buttons'>
         <div>
-              <span className='buttons'>
-                <Checkbox onClick={onViewHandler} type="checkbox" id='check1' />
-            <label htmlFor='check1'>View Mode</label>
+          <span className='buttons'>
+          <Checkbox onClick={onViewHandler} type="checkbox" id='check1' />
+          <label htmlFor='check1'>View Mode</label>
           </span>
         </div>
         <div>
-              <button className='buttons' onClick={onAddCard}><AiOutlinePlus /> Add Card</button>
+          <button className='buttons' onClick={onAddCard}><AiOutlinePlus /> Add Card</button>
         </div>
         <div>
-              <button className='buttons' onClick={onDeleteCard}><AiOutlineDelete /> Delete Card</button>
-          </div>
-          </div>
+          <button className='buttons' onClick={onDeleteCard}><AiOutlineDelete /> Delete Card</button>
+        </div></div>
         </Route>
       </div>
     </header>

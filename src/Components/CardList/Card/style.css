@@ -9,6 +9,8 @@
   background-color: #fff;
   border-color: #6abe83;
   color: #6abe83;
+  user-select: none;
+  cursor: default;
   transition: all ease-in 0.3s ;
 }
 .card:hover{
@@ -27,14 +29,9 @@
   margin: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #000;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.card_title div{
-  width: 50px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template: 1fr / auto 45px;
+  grid-auto-flow:column;
 }
 .card_title input{
   width: 100%;
@@ -43,14 +40,41 @@
   font-style: italic;
   outline: none;
 }
-.card_title div button{
-  width: 35px;
+.card_title .card_title__btn_block{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.card_title .card_title__btn_block button{
+  width: 20px;
+  height: 20px;
+  border: none;
+  border: 1px solid #000;
+  border-radius: 3px;
+  color: #000;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card_title div button:hover, input:hover{
+.card_title .card_title__btn_block input{
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  outline: none;
+}
+.card_title .card_title__btn_block input:hover,
+.card_title .card_title__btn_block button:hover {
   cursor: pointer;
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(246,245,243,1) 100%);
+}
+.card_title .card_title__btn_block input:checked {
+  background: #f06966;
 }
 .card_text{
   margin: 5px;
