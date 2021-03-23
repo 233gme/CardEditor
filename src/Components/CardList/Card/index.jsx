@@ -19,7 +19,7 @@ const Card = props => {
   const editModeOn = () => {
     props.onSaveChanges({...newState, editModeFlag: true, chooseСardFlag: false});
     setNewState({...newState, editModeFlag: true, chooseСardFlag: false});
-  }
+  };
 
   const saveChenges = () => {
     props.onSaveChanges({...newState, editModeFlag: false});
@@ -28,14 +28,14 @@ const Card = props => {
   const abortChanges = () => {
     props.onSaveChanges({...props.card, editModeFlag: false});
     setNewState({...props.card, editModeFlag: false})
-  }
+  };
 
   const toFullCardPage = () => {
     if (!newState.editModeFlag && !props.onView) {
       props.route.history.push('/card/' + newState.id)
       props.onSaveChanges({...newState, chooseСardFlag: false})
     }
-  }
+  };
 
   return (
   <div style={{ minHeight: '100%' }} onDoubleClick={toFullCardPage}>

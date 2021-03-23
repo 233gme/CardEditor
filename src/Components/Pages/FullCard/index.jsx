@@ -1,49 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { onSave } from '../../../Store/Actions/actions';
+import Card from '../../CardList/Card';
 
 const FullCard = props => {
-  const [fullcard, setFullState] = useState({})
-  const { cards } = useSelector(state => (state));
+  const { cards, view } = useSelector(state => (state));
   const dispatch = useDispatch();
-  const onSaveChanges = index => { dispatch(onSave(cards, index)) };
+  const onSaveChanges = id => { dispatch(onSave(cards, id)) };
+  const [fullcard, setFullState] = useState({});
 
   useEffect(() => {
-    setFullState(cards.find(item => (item.id === props.match.params.id)))
-  }, [cards, props.match.params.id])
-
-  const onFullSave = () => {
-    onSaveChanges(fullcard)
-    props.history.push('/')
-  }
-
-  const onFullCancel = () => {
-    props.history.push('/')
-  }
-
-  const addNewText = event => {
-    setFullState({
-      ...fullcard,
-      [event.target.name]: event.target.value
-    });
-  };
+    let card = cards.find(item => (item.id === props.match.params.id))
+    if (card) setFullState(card)
+    else props.history.push('/404')
+  }, [cards, props.match.params.id, props.history])
 
   return (
     <div className='fullcard_block'>
-      <input className='fullcard' type='text' name='title'
-        defaultValue={fullcard.title} onChange={addNewText} />
-      <textarea className='card_textarea fullcard'
-        onChange={addNewText}
-        name='text'
-        defaultValue={fullcard.text}>
-      </textarea>
-      <div className='fullcard_block_nav'>
-        <button className='buttons' onClick={onFullSave}>Save</button>
-        <button className='buttons' onClick={onFullCancel}>Cancel</button>
-      </div>
+      <Card
+        card={fullcard}
+        onView={view}
+        onSaveChanges={(val) => onSaveChanges(val)}
+        route={props} />
     </div>
   )
 }
 
-export default FullCard
+export default FullCard;
