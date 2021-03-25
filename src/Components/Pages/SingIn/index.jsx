@@ -19,7 +19,6 @@ const SignIn = () => {
     event.preventDefault();
     setFormState({ username: '', password: '', });
     setSubmit(false);
-    console.log('[SingIn] - ',formState)
   }
 
   // Added values to the formState

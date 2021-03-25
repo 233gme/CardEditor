@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { onSave } from '../../../Store/Actions/actions';
+import { useSelector } from 'react-redux';
 import Card from '../../CardList/Card';
 
 const FullCard = props => {
-  const { cards, view } = useSelector(state => (state));
-  const dispatch = useDispatch();
-  const onSaveChanges = id => { dispatch(onSave(cards, id)) };
+  const { cards } = useSelector(state => (state));
   const [fullcard, setFullState] = useState({});
 
   useEffect(() => {
@@ -17,11 +14,7 @@ const FullCard = props => {
 
   return (
     <div className='fullcard_block'>
-      <Card
-        card={fullcard}
-        onView={view}
-        onSaveChanges={(val) => onSaveChanges(val)}
-        route={props} />
+      <Card card={fullcard} />
     </div>
   )
 }

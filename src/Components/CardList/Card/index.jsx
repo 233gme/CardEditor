@@ -3,13 +3,20 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import withLoadingDelay from '../../../HOC/withLoadingDelay';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { onSave } from '../../../Store/Actions/actions';
 import './style.css';
 
 const Card = props => {
+  const { cards, view } = useSelector(state => (state));
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [newState, setNewState] = useState({...props.card});
 
   const selectItem = () => {
-    props.onSaveChanges({...newState, chooseСardFlag: !props.card.chooseСardFlag})
+    dispatch(onSave(cards, { ...newState, chooseСardFlag: !props.card.chooseСardFlag }))
   };
 
   const addNewText = event => {
@@ -17,36 +24,38 @@ const Card = props => {
   };
 
   const editModeOn = () => {
-    props.onSaveChanges({...newState, editModeFlag: true, chooseСardFlag: false});
+    dispatch(onSave(cards, { ...newState, editModeFlag: true, chooseСardFlag: false }));
     setNewState({...newState, editModeFlag: true, chooseСardFlag: false});
   };
 
   const saveChenges = () => {
-    props.onSaveChanges({...newState, editModeFlag: false});
+    dispatch(onSave(cards, { ...newState, editModeFlag: false }));
   };
 
   const abortChanges = () => {
-    props.onSaveChanges({...props.card, editModeFlag: false});
+    dispatch(onSave(cards, { ...props.card, editModeFlag: false }));
     setNewState({...props.card, editModeFlag: false})
   };
 
   const toFullCardPage = () => {
-    if (!newState.editModeFlag && !props.onView) {
-      props.route.history.push('/card/' + newState.id)
-      props.onSaveChanges({...newState, chooseСardFlag: false})
+    if (!props.card.editModeFlag) {
+      history.push('/card/' + newState.id)
+      dispatch(onSave(cards, { ...newState, chooseСardFlag: false }))
     }
   };
 
   return (
   <div style={{ minHeight: '100%' }} onDoubleClick={toFullCardPage}>
-  <CardHeader card={props.card}
-    onView={props.onView}
+      <CardHeader
+        card={props.card}
+        onView={view}
     editModeOn={editModeOn}
     selectItem={selectItem}
     addNewText={addNewText}
     saveChenges={saveChenges}
     abortChanges={abortChanges} />
-  <CardBody card={props.card}
+      <CardBody
+        card={props.card}
     addNewText={addNewText} />
   </div>
   )
