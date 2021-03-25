@@ -8,8 +8,7 @@ const SignIn = () => {
 
   // Checking username and password
   useEffect(() => {
-    if ((/\S+@\S+\.(\S{2,6})$/.test(formState.username))
-      && (/(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}/g.test(formState.password))) {
+    if ((/\S+@\S+\.(\S{2,6})$/.test(formState.username)) && (/(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}/g.test(formState.password))) {
       setSubmit(true);
     } else {
       setSubmit(false);
@@ -20,7 +19,6 @@ const SignIn = () => {
     event.preventDefault();
     setFormState({ username: '', password: '', });
     setSubmit(false);
-    console.log(`Form Submit`)
   }
 
   // Added values to the formState
@@ -46,7 +44,7 @@ const SignIn = () => {
           onChange={handleChange}
           required />
       </label>
-      <button className={classNames('buttons', { 'btn_disable': !subState })}>Войти</button>
+      <button className={classNames('buttons', { 'btn_disable': !subState })}>Sing in</button>
     </form>
   );
 }

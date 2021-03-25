@@ -1,21 +1,24 @@
-import React, { useContext } from 'react';
+import React, {useEffect} from 'react';
 import Card from './Card';
-import { CardContext } from '../../Context/card-context';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCards } from '../../Store/Actions/cards';
 
 const CardList = () => {
-  const { cards, view, onSave } = useContext(CardContext);
+  const { cards } = useSelector(state => (state));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!cards.length) dispatch(fetchCards());
+  })
 
   return (
     <div className='main'>
-      {cards.map(card => {
+      {cards && cards.map(card => {
         return (
           <Card
-            key={card.id}
-            card={card}
-            onView={view}
-            onSaveChanges={onSave} />
-        )
-      })}
+          key={card.id}
+          card={card}
+          />
+        )})}
     </div>
   )
 }
