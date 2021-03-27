@@ -4,9 +4,16 @@ import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const logger = () => {
+  return (next) => (action) => {
+    console.log('dispatch - ', action);
+    return next(action);
+  };
+}
+
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk)),
+  composeEnhancers(applyMiddleware(logger, thunk)),
 );
 
 export default store;
