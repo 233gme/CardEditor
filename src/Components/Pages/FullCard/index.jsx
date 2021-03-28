@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Card from '../../CardList/Card';
 
 const FullCard = props => {
-  const { cards } = useSelector(state => (state));
+  const { cards } = useSelector(state => (state.cards));
   const [fullcard, setFullState] = useState({});
 
   useEffect(() => {

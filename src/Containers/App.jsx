@@ -1,9 +1,16 @@
-import React from 'react';
-import {Header, CardList, PageNotFound, SingIn, FullCard} from '../Components';
+import React, { useEffect } from 'react';
+import { Header, CardList, NotFound, SingIn, FullCard, Settings } from '../Components';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setData } from '../Store/Reducers/user';
 import './App.css';
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setData())
+  });
+
     return (
       <BrowserRouter>
       <div className="App">
@@ -12,7 +19,8 @@ const App = () => {
             <Route exact path='/' component={CardList} />
             <Route exact path='/sing-in' component={SingIn} />
             <Route exact path='/card/:id' component={FullCard} />
-            <Route path='/404' component={PageNotFound} />
+            <Route exact path='/settings' component={Settings} />
+            <Route path='/404' component={NotFound} />
             <Redirect to="/404" />
             </Switch>
         </div>

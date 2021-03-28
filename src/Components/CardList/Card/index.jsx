@@ -5,11 +5,11 @@ import withLoadingDelay from '../../../HOC/withLoadingDelay';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { onSave } from '../../../Store/Actions/actions';
+import { onSave } from '../../../Store/Actions/card';
 import './style.css';
 
 const Card = props => {
-  const { cards, view } = useSelector(state => (state));
+  const { cards, view } = useSelector(state => (state.cards));
   const dispatch = useDispatch();
   const history = useHistory();
 

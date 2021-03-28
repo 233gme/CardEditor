@@ -21,17 +21,18 @@ header{
   color: black;
 }
 
-.nav__block__links a:hover {
+.nav__block__links a:hover, .nav_link:hover {
   color: #6abe83;
+  cursor: pointer;
 }
 
-.nav__block__links a:active {
+.nav__block__links a:active, .nav_link:active {
 text-decoration: underline;
 }
 
 .nav__block__buttons{
   display: grid;
-  grid-template-columns: repeat(3, 120px);
+  grid-template-columns: repeat(2, 120px);
   justify-content: start;
   padding-top: 15px;
 }

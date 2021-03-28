@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './style.css';
 
 const Badge = () => {
-  const { cards } = useSelector(state => (state));
+  const { cards } = useSelector(state => (state.cards));
   const count = value => (value.length)
 
   return (
