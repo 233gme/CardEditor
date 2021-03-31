@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { onView } from '../../../Store/Actions/card';
-import { Redirect } from "react-router-dom";
 
 const Checkbox = styled.input`
   appearance: none;
@@ -25,16 +24,16 @@ const Checkbox = styled.input`
 
 const Settings = () => {
   const dispatch = useDispatch();
-  const { cards, user } = useSelector(state => (state));
+  const { cards } = useSelector(state => (state));
   const onViewHandler = () => { dispatch(onView(cards.cards, !cards.view)) };
 
   return (
-    user.isAdmin ? (<div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <span className='buttons'>
         <Checkbox onClick={onViewHandler} type="checkbox" id='check1' />
         <label htmlFor='check1'>View Mode is {cards.view ? 'ON' : 'OFF'}</label>
       </span>
-    </div>) : <Redirect to="/404" />
+    </div>
   )
 }
 

@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1>{user.user.username ? user.isAdmin ? 'Hackerman is here!' : `Singed in as ${user.user.username}` : 'Header'}</h1>
+      <h1>{user.user.username ? user.isAdmin ? 'Hello admin' : `Singed in as ${user.user.username}` : 'Header'}</h1>
       <Route path='/' exact><Badge /></Route>
       <div className="nav__block">
         <div className='nav__block__links'>
