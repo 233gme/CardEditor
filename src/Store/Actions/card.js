@@ -30,6 +30,12 @@ export const onDelete = cards => {
 export const onAdd = cards => {
   return ({
     type: 'ON_ADD',
-    payload: [...cards].concat({ id: uuidv4(), title: '', text: '', editModeFlag: false, chooseСardFlag: false, }),
+    payload: [...cards].concat({
+      id: uuidv4(),
+      title: '',
+      text: '',
+      editModeFlag: false,
+      chooseСardFlag: false
+    }),
   })
 }
