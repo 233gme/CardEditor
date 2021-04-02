@@ -34,14 +34,12 @@ export const Card = ({ card, onSaveChanges, view }) => {
   };
 
   const toFullCardPage = () => {
-    if (!newState.editModeFlag && !view) {
       history.push('/card/' + newState.id)
-      onSaveChanges({ ...newState, chooseСardFlag: false })
-    }
+    onSaveChanges({ ...newState, chooseСardFlag: false })
   };
 
   return (
-  <div style={{ minHeight: '100%' }} onDoubleClick={toFullCardPage}>
+    <div style={{ minHeight: '100%' }} onDoubleClick={(!newState.editModeFlag && !view) ? toFullCardPage : undefined}>
       <CardHeader
         card={card}
         onView={view}
