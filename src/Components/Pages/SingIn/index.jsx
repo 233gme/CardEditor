@@ -31,6 +31,9 @@ const SignIn = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value });
   };
 
+// username: testAdmin@gmail.com
+// password: 12345yuiopp
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
