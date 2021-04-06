@@ -2,10 +2,12 @@ import React, {useEffect} from 'react';
 import Card from './Card';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCards } from '../../Store/Actions/cards';
+import { onSave } from '../../Store/Actions/card';
 
-const CardList = () => {
-  const { cards } = useSelector(state => (state.cards));
+const CardList = props => {
+  const { cards, view } = useSelector(state => (state.cards));
   const dispatch = useDispatch();
+  const onSaveChanges = id => { dispatch(onSave(cards, id)) };
   useEffect(() => {
     if (!cards.length) dispatch(fetchCards());
   })
@@ -17,7 +19,8 @@ const CardList = () => {
           <Card
           key={card.id}
           card={card}
-          />
+            view={view}
+            onSaveChanges={(val) => onSaveChanges(val)} />
         )})}
     </div>
   )

@@ -4,50 +4,44 @@ import CardBody from './CardBody';
 import withLoadingDelay from '../../../HOC/withLoadingDelay';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { onSave } from '../../../Store/Actions/card';
 import './style.css';
 
-const Card = props => {
-  const { cards, view } = useSelector(state => (state.cards));
-  const dispatch = useDispatch();
+export const Card = ({ card, onSaveChanges, view }) => {
   const history = useHistory();
-
-  const [newState, setNewState] = useState({...props.card});
+  const [newState, setNewState] = useState({ ...card });
 
   const selectItem = () => {
-    dispatch(onSave(cards, { ...newState, chooseСardFlag: !props.card.chooseСardFlag }))
+    onSaveChanges({ ...newState, chooseСardFlag: !card.chooseСardFlag })
   };
 
   const addNewText = event => {
+    onSaveChanges({ ...card });
     setNewState({...newState, [event.target.name]: event.target.value});
   };
 
   const editModeOn = () => {
-    dispatch(onSave(cards, { ...newState, editModeFlag: true, chooseСardFlag: false }));
-    setNewState({...newState, editModeFlag: true, chooseСardFlag: false});
+    onSaveChanges({ ...newState, editModeFlag: true, chooseСardFlag: false });
+     setNewState({...newState, editModeFlag: true, chooseСardFlag: false});
   };
 
   const saveChenges = () => {
-    dispatch(onSave(cards, { ...newState, editModeFlag: false }));
+    onSaveChanges({ ...newState, editModeFlag: false });
   };
 
   const abortChanges = () => {
-    dispatch(onSave(cards, { ...props.card, editModeFlag: false }));
-    setNewState({...props.card, editModeFlag: false})
+    onSaveChanges({ ...card, editModeFlag: false });
+    setNewState({ ...card, editModeFlag: false })
   };
 
   const toFullCardPage = () => {
-    if (!props.card.editModeFlag) {
       history.push('/card/' + newState.id)
-      dispatch(onSave(cards, { ...newState, chooseСardFlag: false }))
-    }
+    onSaveChanges({ ...newState, chooseСardFlag: false })
   };
 
   return (
-  <div style={{ minHeight: '100%' }} onDoubleClick={toFullCardPage}>
+    <div style={{ minHeight: '100%' }} onDoubleClick={(!newState.editModeFlag && !view) ? toFullCardPage : undefined}>
       <CardHeader
-        card={props.card}
+        card={card}
         onView={view}
     editModeOn={editModeOn}
     selectItem={selectItem}
@@ -55,7 +49,7 @@ const Card = props => {
     saveChenges={saveChenges}
     abortChanges={abortChanges} />
       <CardBody
-        card={props.card}
+        card={card}
     addNewText={addNewText} />
   </div>
   )
