@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/ReactJS/static/css/main.8b4916f4.chunk.css",
-    "main.js": "/ReactJS/static/js/main.73f7dd53.chunk.js",
-    "main.js.map": "/ReactJS/static/js/main.73f7dd53.chunk.js.map",
-    "runtime-main.js": "/ReactJS/static/js/runtime-main.2e7c53ae.js",
-    "runtime-main.js.map": "/ReactJS/static/js/runtime-main.2e7c53ae.js.map",
-    "static/js/2.bf71b71f.chunk.js": "/ReactJS/static/js/2.bf71b71f.chunk.js",
-    "static/js/2.bf71b71f.chunk.js.map": "/ReactJS/static/js/2.bf71b71f.chunk.js.map",
-    "index.html": "/ReactJS/index.html",
-    "static/css/main.8b4916f4.chunk.css.map": "/ReactJS/static/css/main.8b4916f4.chunk.css.map",
-    "static/js/2.bf71b71f.chunk.js.LICENSE.txt": "/ReactJS/static/js/2.bf71b71f.chunk.js.LICENSE.txt"
+    "main.css": "/CardEditor/static/css/main.8b4916f4.chunk.css",
+    "main.js": "/CardEditor/static/js/main.73f7dd53.chunk.js",
+    "main.js.map": "/CardEditor/static/js/main.73f7dd53.chunk.js.map",
+    "runtime-main.js": "/CardEditor/static/js/runtime-main.ec351b5b.js",
+    "runtime-main.js.map": "/CardEditor/static/js/runtime-main.ec351b5b.js.map",
+    "static/js/2.d6c96ea2.chunk.js": "/CardEditor/static/js/2.d6c96ea2.chunk.js",
+    "static/js/2.d6c96ea2.chunk.js.map": "/CardEditor/static/js/2.d6c96ea2.chunk.js.map",
+    "index.html": "/CardEditor/index.html",
+    "static/css/main.8b4916f4.chunk.css.map": "/CardEditor/static/css/main.8b4916f4.chunk.css.map",
+    "static/js/2.d6c96ea2.chunk.js.LICENSE.txt": "/CardEditor/static/js/2.d6c96ea2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2e7c53ae.js",
-    "static/js/2.bf71b71f.chunk.js",
+    "static/js/runtime-main.ec351b5b.js",
+    "static/js/2.d6c96ea2.chunk.js",
     "static/css/main.8b4916f4.chunk.css",
     "static/js/main.73f7dd53.chunk.js"
   ]
