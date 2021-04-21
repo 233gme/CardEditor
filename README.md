@@ -15,4 +15,3 @@ Online card editor
 - jest
 - uuid
 - prop-types
-- gh-pages
